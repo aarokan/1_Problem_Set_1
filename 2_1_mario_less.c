@@ -11,7 +11,7 @@ int main(void)
     {
         height = get_int("Height: ");
     }
-    while (height < 1 || height > 9);
+    while (height < 1 || height > 8);
     
     // Loop from 0 to height (col)
     for (int row = 1; row <= height; row++)
