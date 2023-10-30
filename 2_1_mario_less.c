@@ -5,5 +5,8 @@
 
 int main(void)
 {
-    
+    // Prompt height input 1-8
+    // Loop from 0 to height
+        // Loop from 0 to current counter
+        // print #
 }
