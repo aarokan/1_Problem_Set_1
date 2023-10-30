@@ -14,10 +14,18 @@ int main(void)
     while (height < 1 || height > 9);
     
     // Loop from 0 to height (col)
-    for (int row = 0; row < height; row++)
+    for (int row = 1; row <= height; row++)
     {
+        // Right-align pyramid by printing empty space
+        int requiredEmptySpaces = height - row;
+        while (requiredEmptySpaces > 0)
+        {
+            printf(" ");
+            requiredEmptySpaces--;   
+        }
+
         // Loop from 0 to current counter (row)
-        for (int col = 0; col <= row; col++)
+        for (int col = 1; col <= row; col++)
         {
             printf("#");
         }
