@@ -37,6 +37,13 @@ void print_pyramid(int height)
 {
     for (int i = 0; i < height; i++)
     {
+        int requiredEmptySpace = height - i + 1;
+        while (requiredEmptySpace > 0)
+        {
+            printf(" ");
+            requiredEmptySpace--;
+        }
+        
         for (int j = 0; j <= i; j++)
         {
             printf("#");
