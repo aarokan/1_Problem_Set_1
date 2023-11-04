@@ -13,17 +13,27 @@ int main(void)
     } 
     while (height < 1 || height > 8);
     
-    // Loop from 0 to height (col)
-    for (int col = 0; col < height; col++)
+    // Loop from 0 to height (row)
+    for (int row = 0; row < height; row++)
     {
         // Right-align pyramid by printing required empty space 
-        int requiredEmptySpace = height - col + 1;
+        int requiredEmptySpace = height - row + 1;
         while (requiredEmptySpace > 0)
         {
-            /* code */
+            printf(" ");
+            requiredEmptySpace--;
         }
         
-
         // print (i hashes + double space + i hashes)
+        for (int i = 0; i <= row; i++)
+        {
+            printf("#");
+        }
+        printf("  ");
+        for (int j = 0; j <= row; j++)
+        {
+            printf("#");
+        }
+        printf("\n");
     }
 }
