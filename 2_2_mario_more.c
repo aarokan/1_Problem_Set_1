@@ -17,7 +17,7 @@ int main(void)
     for (int row = 0; row < height; row++)
     {
         // Right-align pyramid by printing required empty space 
-        int requiredEmptySpace = height - row + 1;
+        int requiredEmptySpace = height - row - 1;
         while (requiredEmptySpace > 0)
         {
             printf(" ");
