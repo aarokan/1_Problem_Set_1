@@ -43,7 +43,7 @@ int get_cents(void)
     {
         cents = get_int("how many cents the customer is owed? ");
     }
-    while (cents > 0);
+    while (cents < 0);
     return cents;
 }
 
