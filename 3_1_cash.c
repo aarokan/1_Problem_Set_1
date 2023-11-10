@@ -14,10 +14,7 @@ int main(void)
 
     // Calculate the number of quarters to give the customer
     int quarters = calculate_quarters(cents);
-    printf("\ncents after calling the func: %i", cents);
     cents = cents - quarters * 25;
-    printf("\ncents after deduct: %i", cents);
-    printf("\n");
 
     // Calculate the number of dimes to give the customer
     int dimes = calculate_dimes(cents);
@@ -44,7 +41,7 @@ int get_cents(void)
     int cents;
     do
     {
-        cents = get_int("how many cents the customer is owed? ");
+        cents = get_int("Change owed: ");
     }
     while (cents < 0);
     return cents;
@@ -52,14 +49,19 @@ int get_cents(void)
 
 int calculate_quarters(int cents)
 {
-    int numQuarters = 0;
+    // add a quarter until cents are less than 25
+    int numOfQuarters = 0;
     while (cents >= 25)
     {
-        numQuarters++;
+        numOfQuarters++;
+        /*
+        function receives a copy of the cents variable, 
+        rather than a reference to it. Any changes made 
+        will not be reflected in the original variable. 
+        */
         cents -= 25;
-        printf("\ncents inside loop: %i", cents);
     }
-    return numQuarters;
+    return numOfQuarters;
 }
 
 int calculate_dimes(int cents)
