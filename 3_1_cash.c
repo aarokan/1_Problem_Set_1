@@ -14,7 +14,10 @@ int main(void)
 
     // Calculate the number of quarters to give the customer
     int quarters = calculate_quarters(cents);
+    printf("\ncents after calling the func: %i", cents);
     cents = cents - quarters * 25;
+    printf("\ncents after deduct: %i", cents);
+    printf("\n");
 
     // Calculate the number of dimes to give the customer
     int dimes = calculate_dimes(cents);
@@ -49,8 +52,14 @@ int get_cents(void)
 
 int calculate_quarters(int cents)
 {
-    // TODO
-    return 0;
+    int numQuarters = 0;
+    while (cents >= 25)
+    {
+        numQuarters++;
+        cents -= 25;
+        printf("\ncents inside loop: %i", cents);
+    }
+    return numQuarters;
 }
 
 int calculate_dimes(int cents)
