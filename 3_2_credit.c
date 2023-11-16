@@ -17,9 +17,9 @@ int main(void)
     // check if credit card number is valid (calculate Checksum)
     bool cardValidity = checkIfValid(cardNumber);
     // test mod 10 to get last digit
-    printf("%li", cardNumber % 10);
-    printf("\n%li", (cardNumber % 100 - cardNumber %10) / 10);
-    printf("\n%li", (cardNumber / 10 % 10 - cardNumber %10) / 10);
+    printf("card number m10 %li", cardNumber % 10);
+    printf("\n card number m100 %li", (cardNumber % 100 - cardNumber %10) / 10);
+    printf("\n card number /10 /m10 %li", (cardNumber / 10 % 10 - cardNumber %10) / 10);
 
     // check for card length & starting digit (VISA or MASTERCARD ..etc
     
@@ -42,19 +42,21 @@ int addMultipliedByTwo(long cardNumber)
 {
     /* note: if we take a big number % 10 it will give us last digit */
     // create variable to help moving to previous digit
-    int digitDecreaser = 10;
+    int powerOfTen = 100;
     int sum;
     while (cardNumber > 0)
     {    
         // print last digit
-        printf("\nlast digit is %li", (cardNumber / digitDecreaser % 100 - cardNumber %10) / 10);
-        int multypliedByTwoDigits = (cardNumber / digitDecreaser % 100 - cardNumber %10) / 10;
+        int lastDigit = (cardNumber % powerOfTen - cardNumber % powerOfTen / 10);
+        printf("\nlast digit is %i", lastDigit);
+        int multypliedByTwoDigits = lastDigit * 2;
         sum = sum + multypliedByTwoDigits;
         printf("\nSum = %i", sum);
+        printf("\n");
 
         // Delete last digit from card number temperoaroly
-        cardNumber = cardNumber / digitDecreaser;
-        // digitDecreaser *= 10;
+        cardNumber = cardNumber / powerOfTen;
+        powerOfTen *= 10;
     }
     return sum;
 }
