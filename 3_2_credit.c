@@ -47,10 +47,10 @@ int addMultipliedByTwo(long cardNumber)
     while (digitPowerOfTen < cardNumber)
     {    
         // create variables to help exracting intended digits
-        int previousDigitsPower = digitPowerOfTen / 10;
+        long previousDigitsPower = digitPowerOfTen / 10;
         int intendedDigit = (cardNumber % digitPowerOfTen - cardNumber % previousDigitsPower) / previousDigitsPower;
         printf("\ndigitPowerOfTen: %li", digitPowerOfTen);
-        printf("\npreviousDigitPower: %i", previousDigitsPower);
+        printf("\npreviousDigitPower: %li", previousDigitsPower);
         printf("\nintended digit is %i", intendedDigit);
         int multypliedByTwoDigits = intendedDigit * 2;
         sum = sum + multypliedByTwoDigits;
