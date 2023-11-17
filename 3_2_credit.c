@@ -41,14 +41,16 @@ bool checkIfValid(long cardNumber)
 int addMultipliedByTwo(long cardNumber)
 {
     /* note: if we take a big number % 10 it will give us last digit */
-    // create variable to help moving to previous digit
+    // create a variable to help exracting intended digits
     long digitPowerOfTen = 100;
     int sum = 0;
     while (digitPowerOfTen < cardNumber)
     {    
-        // print last digit
+        // create variables to help exracting intended digits
         int previousDigitsPower = digitPowerOfTen / 10;
         int intendedDigit = (cardNumber % digitPowerOfTen - cardNumber % previousDigitsPower) / previousDigitsPower;
+        printf("\ndigitPowerOfTen: %li", digitPowerOfTen);
+        printf("\npreviousDigitPower: %i", previousDigitsPower);
         printf("\nintended digit is %i", intendedDigit);
         int multypliedByTwoDigits = intendedDigit * 2;
         sum = sum + multypliedByTwoDigits;
