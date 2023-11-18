@@ -3,6 +3,7 @@
 
 bool checkIfValid(long cardNumber);
 int addMultipliedByTwo(long cardNumber);
+int addRemainingDigits(long cardNumber);
 
 int main(void) 
 {
@@ -30,6 +31,8 @@ bool checkIfValid(long cardNumber)
     int sumOfMultiply = addMultipliedByTwo(cardNumber);
 
     // add digits that weren’t multiplied by 2 (starting from the end) into sumOfRemainingDigits
+    int sumOfRemainingDigits = addRemainingDigits(cardNumber);
+
     // if the total’s last digit is 0 (the total modulo 10 is congruent to 0) the num is valid
     return 0;
 }
@@ -63,4 +66,28 @@ int addMultipliedByTwo(long cardNumber)
     }
     printf("sum before return: %i", sum);
     return sum;
+}
+
+int addRemainingDigits(long cardNumber)
+{
+    // create a variable to help exracting intended digits
+    // note: if we take a big number % 10 it will give us last digit
+    long remDigitPowerOfTen = 10;
+    int remSum = 0;
+    while (remDigitPowerOfTen < cardNumber)
+    {
+        // create variables to help exracting intended digits
+        long remPreviousDigitsPower = remDigitPowerOfTen / 10;
+        int remIntendedDigit = (cardNumber % remDigitPowerOfTen - cardNumber % remPreviousDigitsPower) / remPreviousDigitsPower;
+        printf("\nremDigitPowerOfTen: %li", remDigitPowerOfTen);
+        printf("\nremPreviousDigitPower: %li", remPreviousDigitsPower);
+        printf("\nremIntended digit is %i", remIntendedDigit);
+
+        remSum += remIntendedDigit;
+        printf("\nremSum = %i", remSum);
+        printf("\n");
+        // move back two digits by increasing digitPowerOfTen
+        remDigitPowerOfTen*= 100;
+    }
+    return 0; 
 }
