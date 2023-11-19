@@ -17,7 +17,9 @@ int main(void)
     
     // check if credit card number is valid (calculate Checksum)
     bool cardIsValid = checkIfValid(cardNumber);
-
+    printf("\n cardIsValid: %d", cardIsValid);
+    printf("\n");
+    
     // check for card length & starting digit (VISA or MASTERCARD ..etc
     
     // print AMEX, MASTERCARD, VISA or INVALID
@@ -29,12 +31,20 @@ bool checkIfValid(long cardNumber)
     // Multiply every other digit by 2, starting with the number’s second-to-last
     // then add those products’ digits together (13 would be 1+3) into sumOfMultiply
     int sumOfMultiply = addMultipliedByTwo(cardNumber);
+    printf("\nsumOfMultiply: %i", sumOfMultiply);
 
     // add digits that weren’t multiplied by 2 (starting from the end) into sumOfRemainingDigits
     int sumOfRemainingDigits = addRemainingDigits(cardNumber);
+    printf("\nsumOfRemainingDigits: %i", sumOfRemainingDigits);
 
     // if the total’s last digit is 0 (the total modulo 10 is congruent to 0) the num is valid
-    return 0;
+    if ((sumOfMultiply + sumOfRemainingDigits) % 10 == 0)
+    {
+        return true;
+    } else
+    {
+        return false;
+    } 
 }
 
 int addMultipliedByTwo(long cardNumber)
@@ -64,7 +74,6 @@ int addMultipliedByTwo(long cardNumber)
         // move back two digits by increasing digitPowerOfTen
         digitPowerOfTen *= 100;
     }
-    printf("sum before return: %i", sum);
     return sum;
 }
 
@@ -86,8 +95,9 @@ int addRemainingDigits(long cardNumber)
         remSum += remIntendedDigit;
         printf("\nremSum = %i", remSum);
         printf("\n");
+
         // move back two digits by increasing digitPowerOfTen
         remDigitPowerOfTen*= 100;
     }
-    return 0; 
+    return remSum; 
 }
