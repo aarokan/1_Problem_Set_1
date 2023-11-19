@@ -43,7 +43,7 @@ int addMultipliedByTwo(long cardNumber)
     // note: if we take a big number % 10 it will give us last digit
     long digitPowerOfTen = 100;
     int sum = 0;
-    while (digitPowerOfTen < cardNumber)
+    while (digitPowerOfTen < cardNumber * 10)
     {    
         // create variables to help exracting intended digits
         long previousDigitsPower = digitPowerOfTen / 10;
@@ -74,7 +74,7 @@ int addRemainingDigits(long cardNumber)
     // note: if we take a big number % 10 it will give us last digit
     long remDigitPowerOfTen = 10;
     int remSum = 0;
-    while (remDigitPowerOfTen < cardNumber)
+    while (remDigitPowerOfTen < cardNumber * 10)
     {
         // create variables to help exracting intended digits
         long remPreviousDigitsPower = remDigitPowerOfTen / 10;
