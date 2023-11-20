@@ -17,12 +17,16 @@ int main(void)
     
     // check if credit card number is valid (calculate Checksum)
     bool cardIsValid = checkIfValid(cardNumber);
-    printf("\n cardIsValid: %d", cardIsValid);
-    printf("\n");
     
-    // check for card length & starting digit (VISA or MASTERCARD ..etc
-    
-    // print AMEX, MASTERCARD, VISA or INVALID
+    // check for card validity, length & starting digit (VISA or MASTERCARD ..etc
+    // then print AMEX, MASTERCARD, VISA or INVALID
+    if (cardIsValid)
+    {
+        printf("\nCard is Valid");
+    } else
+    {
+        printf("\nCard is not Valid");
+    }
     
 }
 
@@ -31,11 +35,9 @@ bool checkIfValid(long cardNumber)
     // Multiply every other digit by 2, starting with the number’s second-to-last
     // then add those products’ digits together (13 would be 1+3) into sumOfMultiply
     int sumOfMultiply = addMultipliedByTwo(cardNumber);
-    printf("\nsumOfMultiply: %i", sumOfMultiply);
 
     // add digits that weren’t multiplied by 2 (starting from the end) into sumOfRemainingDigits
     int sumOfRemainingDigits = addRemainingDigits(cardNumber);
-    printf("\nsumOfRemainingDigits: %i", sumOfRemainingDigits);
 
     // if the total’s last digit is 0 (the total modulo 10 is congruent to 0) the num is valid
     if ((sumOfMultiply + sumOfRemainingDigits) % 10 == 0)
@@ -58,18 +60,14 @@ int addMultipliedByTwo(long cardNumber)
         // create variables to help exracting intended digits
         long previousDigitsPower = digitPowerOfTen / 10;
         int intendedDigit = (cardNumber % digitPowerOfTen - cardNumber % previousDigitsPower) / previousDigitsPower;
-        printf("\ndigitPowerOfTen: %li", digitPowerOfTen);
-        printf("\npreviousDigitPower: %li", previousDigitsPower);
-        printf("\nintended digit is %i", intendedDigit);
         int multypliedByTwoDigits = intendedDigit * 2;
+
         // add those products’ digits together (13 would be 1+3)
         int lastDigit = multypliedByTwoDigits % 10;
         int firstDigit = (multypliedByTwoDigits - multypliedByTwoDigits % 10) / 10;
         int addedProductsDigits = lastDigit + firstDigit;
 
         sum = sum + addedProductsDigits;
-        printf("\nSum = %i", sum);
-        printf("\n");
 
         // move back two digits by increasing digitPowerOfTen
         digitPowerOfTen *= 100;
@@ -88,13 +86,9 @@ int addRemainingDigits(long cardNumber)
         // create variables to help exracting intended digits
         long remPreviousDigitsPower = remDigitPowerOfTen / 10;
         int remIntendedDigit = (cardNumber % remDigitPowerOfTen - cardNumber % remPreviousDigitsPower) / remPreviousDigitsPower;
-        printf("\nremDigitPowerOfTen: %li", remDigitPowerOfTen);
-        printf("\nremPreviousDigitPower: %li", remPreviousDigitsPower);
-        printf("\nremIntended digit is %i", remIntendedDigit);
 
+        // add those digits together
         remSum += remIntendedDigit;
-        printf("\nremSum = %i", remSum);
-        printf("\n");
 
         // move back two digits by increasing digitPowerOfTen
         remDigitPowerOfTen*= 100;
