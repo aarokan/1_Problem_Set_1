@@ -20,14 +20,13 @@ int main(void)
     
     // check for card validity, length & starting digit (VISA or MASTERCARD ..etc
     // then print AMEX, MASTERCARD, VISA or INVALID
-    if (cardIsValid)
-    {
-        printf("\nCard is Valid");
-    } else
+    if (!cardIsValid)
     {
         printf("\nCard is not Valid");
+    } else
+    {
+        printf("\nCard is Valid");
     }
-    
 }
 
 bool checkIfValid(long cardNumber)
