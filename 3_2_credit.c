@@ -22,10 +22,22 @@ int main(void)
     // then print AMEX, MASTERCARD, VISA or INVALID
     if (!cardIsValid)
     {
-        printf("\nCard is not Valid");
-    } else
+        printf("INVALID\n");
+    }
+    // AMEX uses 15-digit numbers and start with 34 or 37
+    else if (cardNumber > 99999999999999 & cardNumber <= 379999999999999)
     {
-        printf("\nCard is Valid");
+        printf("AMEX\n");
+    } 
+    // Visa uses 13- and 16-digit numbers and start with 4
+    else if (cardNumber < 99999999999999 || cardNumber > 4000000000000000)
+    {
+        printf("VISA\n");
+    }
+    // MasterCard uses 16-digit numbers most start with 51, 52, 53, 54, or 55
+    else if (cardNumber > 999999999999999 & cardNumber <= 10000000000000000)
+    {
+        printf("MASTERCARD\n");
     }
 }
 
