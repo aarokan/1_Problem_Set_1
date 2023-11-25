@@ -18,6 +18,26 @@ int main(void)
     // check if credit card number is valid (calculate Checksum)
     bool cardIsValid = checkIfValid(cardNumber);
     
+    // get the first two digits of card number
+    long firstPowerOfTen = 100;
+    int firstDigit;
+    int secondDigit;
+    while (firstPowerOfTen < cardNumber)
+    {
+        long firstPreviousDigitsPower = firstPowerOfTen / 10;
+        int currentDigit = (cardNumber % firstPowerOfTen - cardNumber % firstPreviousDigitsPower) / firstPreviousDigitsPower;
+        secondDigit = currentDigit;
+        printf("\nsecondDigit = %i", secondDigit);
+
+        firstPowerOfTen *= 10;
+
+        firstPreviousDigitsPower = firstPowerOfTen / 10;
+        currentDigit = (cardNumber % firstPowerOfTen - cardNumber % firstPreviousDigitsPower) / firstPreviousDigitsPower;
+        firstDigit = currentDigit;
+        printf("\nfirstDigit = %i", firstDigit);
+        printf("\n");
+    }
+    
     // check for card validity, length & starting digit (VISA or MASTERCARD ..etc
     // then print AMEX, MASTERCARD, VISA or INVALID
     if (!cardIsValid)
@@ -25,7 +45,7 @@ int main(void)
         printf("INVALID\n");
     }
     // AMEX uses 15-digit numbers and start with 34 or 37
-    else if (cardNumber > 99999999999999 & cardNumber <= 379999999999999)
+    else if (cardNumber / 100000000000000 < 10 & cardNumber <= 379999999999999)
     {
         printf("AMEX\n");
     } 
@@ -38,6 +58,10 @@ int main(void)
     else if (cardNumber > 999999999999999 & cardNumber <= 10000000000000000)
     {
         printf("MASTERCARD\n");
+    }
+    else 
+    {
+        printf("INVALID\n");
     }
 }
 
