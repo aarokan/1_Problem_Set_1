@@ -28,19 +28,14 @@ int main(void)
         long firstPreviousDigitsPower = firstPowerOfTen / 10;
         int currentDigit = (cardNumber % firstPowerOfTen - cardNumber % firstPreviousDigitsPower) / firstPreviousDigitsPower;
         secondDigit = currentDigit;
-        printf("\nsecondDigit = %i", secondDigit);
 
         firstPowerOfTen *= 10;
 
         firstPreviousDigitsPower = firstPowerOfTen / 10;
         currentDigit = (cardNumber % firstPowerOfTen - cardNumber % firstPreviousDigitsPower) / firstPreviousDigitsPower;
         firstDigit = currentDigit;
-        printf("\nfirstDigit = %i", firstDigit);
-        printf("\n");
 
         digitCounter += 1;
-        printf("digit counter = %i", digitCounter);
-        printf("\n");
     }
     
     // check for card validity, length & starting digit (VISA or MASTERCARD ..etc
@@ -50,17 +45,17 @@ int main(void)
         printf("INVALID\n");
     }
     // AMEX uses 15-digit numbers and start with 34 or 37
-    else if (cardNumber / 100000000000000 < 10 & cardNumber <= 379999999999999)
+    else if (digitCounter == 15 & firstDigit == 3 & (secondDigit == 4 || secondDigit == 7))
     {
         printf("AMEX\n");
     } 
     // Visa uses 13- and 16-digit numbers and start with 4
-    else if (cardNumber < 99999999999999 || cardNumber > 4000000000000000)
+    else if ((digitCounter == 13 || digitCounter == 16) & (firstDigit == 4))
     {
         printf("VISA\n");
     }
     // MasterCard uses 16-digit numbers most start with 51, 52, 53, 54, or 55
-    else if (cardNumber > 999999999999999 & cardNumber <= 10000000000000000)
+    else if (digitCounter ==16 & firstDigit == 5 & secondDigit < 6)
     {
         printf("MASTERCARD\n");
     }
