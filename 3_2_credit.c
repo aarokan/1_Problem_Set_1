@@ -18,10 +18,11 @@ int main(void)
     // check if credit card number is valid (calculate Checksum)
     bool cardIsValid = checkIfValid(cardNumber);
     
-    // get the first two digits of card number
+    // get digits counts & the first two digits of card number 
     long firstPowerOfTen = 100;
     int firstDigit;
     int secondDigit;
+    int digitCounter = 2;
     while (firstPowerOfTen < cardNumber)
     {
         long firstPreviousDigitsPower = firstPowerOfTen / 10;
@@ -35,6 +36,10 @@ int main(void)
         currentDigit = (cardNumber % firstPowerOfTen - cardNumber % firstPreviousDigitsPower) / firstPreviousDigitsPower;
         firstDigit = currentDigit;
         printf("\nfirstDigit = %i", firstDigit);
+        printf("\n");
+
+        digitCounter += 1;
+        printf("digit counter = %i", digitCounter);
         printf("\n");
     }
     
