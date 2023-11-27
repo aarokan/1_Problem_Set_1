@@ -9,11 +9,7 @@ int main(void)
 {
     // prompt for input (long) 
     long cardNumber;
-    do
-    {
-        cardNumber = get_long("Credit Card Number: ");
-    }
-    while (cardNumber < 999999999999 || cardNumber > 9999999999999999);
+    cardNumber = get_long("Credit Card Number: ");   
     
     // check if credit card number is valid (calculate Checksum)
     bool cardIsValid = checkIfValid(cardNumber);
