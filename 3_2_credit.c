@@ -51,7 +51,7 @@ int main(void)
         printf("VISA\n");
     }
     // MasterCard uses 16-digit numbers most start with 51, 52, 53, 54, or 55
-    else if (digitCounter ==16 & firstDigit == 5 & secondDigit < 6)
+    else if (digitCounter == 16 & firstDigit == 5 & secondDigit < 6)
     {
         printf("MASTERCARD\n");
     }
@@ -74,7 +74,8 @@ bool checkIfValid(long cardNumber)
     if ((sumOfMultiply + sumOfRemainingDigits) % 10 == 0)
     {
         return true;
-    } else
+    }
+    else
     {
         return false;
     } 
